@@ -18,6 +18,7 @@ namespace GuessingGameTemplate4U
     public partial class Form1 : Form
     {
         public static List<int> numberGuesses = new List<int>();
+        public static int number = 0;
 
         public Form1()
         {

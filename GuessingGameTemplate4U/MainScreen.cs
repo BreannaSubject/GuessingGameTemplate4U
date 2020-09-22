@@ -19,7 +19,7 @@ namespace GuessingGameTemplate4U
         public static Random randNum = new Random();
         int rand = randNum.Next(1, 101);
         int guess;
-        public static int number = 0;
+        
 
         public MainScreen()
         {
@@ -28,7 +28,8 @@ namespace GuessingGameTemplate4U
 
         private void guessButton_Click(object sender, EventArgs e)
         {
-            number++;
+            Form1.number++;
+           
             try
             {
                 guess = Convert.ToInt16(inputBox.Text);
@@ -58,6 +59,7 @@ namespace GuessingGameTemplate4U
                     results.Location = new Point((f.Width - results.Width) / 2, (f.Height - results.Height) / 2);
 
                 }
+                
             }
             catch
             {
