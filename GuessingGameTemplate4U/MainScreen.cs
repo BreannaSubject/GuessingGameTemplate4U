@@ -18,6 +18,8 @@ namespace GuessingGameTemplate4U
         //variable that can be used throughout the program 
         public static Random randNum = new Random();
         int rand = randNum.Next(1, 101);
+        int guess;
+        public static int number = 0;
 
         public MainScreen()
         {
@@ -26,29 +28,47 @@ namespace GuessingGameTemplate4U
 
         private void guessButton_Click(object sender, EventArgs e)
         {
-            
-            int guess = Convert.ToInt16(inputBox.Text);
+            number++;
+            try
+            {
+                guess = Convert.ToInt16(inputBox.Text);
+
+
+                if (guess < rand)
+                {
+                    outputLabel.Text = "Too Low!";
+
+                }
+                else if (guess > rand)
+                {
+                    outputLabel.Text = "Too High!";
+                }
+                else
+                {
+                    outputLabel.Text = "You Got it!";
+                    Refresh();
+                    Thread.Sleep(1000);
+
+                    //TODO close this screen and open a Results Screen (you need to create this)
+                    ResultsScreen results = new ResultsScreen();
+
+                    Form f = this.FindForm();
+                    f.Controls.Remove(this);
+                    f.Controls.Add(results);
+                    results.Location = new Point((f.Width - results.Width) / 2, (f.Height - results.Height) / 2);
+
+                }
+            }
+            catch
+            {
+
+            }
+
 
             //TODO add guess to List of guesses on Form1
 
+            Form1.numberGuesses.Add(guess);
 
-            if (guess < rand)
-            {
-                outputLabel.Text = "Too Low!";
-            }
-            else if (guess > rand)
-            {
-                outputLabel.Text = "Too High!";
-            }
-            else
-            {
-                outputLabel.Text = "You Got it!";
-                Refresh();
-                Thread.Sleep(1000);
-
-                //TODO close this screen and open a Results Screen (you need to create this)
-
-            }
 
             inputBox.Text = "";
             inputBox.Focus();
