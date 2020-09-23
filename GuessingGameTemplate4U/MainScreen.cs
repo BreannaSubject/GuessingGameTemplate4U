@@ -56,7 +56,7 @@ namespace GuessingGameTemplate4U
                     Form f = this.FindForm();
                     f.Controls.Remove(this);
                     f.Controls.Add(results);
-                    results.Location = new Point((f.Width - results.Width) / 2, (f.Height - results.Height) / 2);
+                    
 
                 }
                 
